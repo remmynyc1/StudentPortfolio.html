@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Page Title-->
+    <title>Student Portfolio - Luis Ramirez</title>
+</head>
+<body>
+
+    <!--Main Heading-->
+     <h1 style = "border:2px solid Red;" >  Luis Ramirez </h1>
+    
+
+    <!--Image-->
+    <img src="Pitbull1.jpg" alt="A profile picture of Luis Ramirez" style="width: 200px; max-width: 100%; height: auto;">
+
+    
+    <!--About Me-->
+    <h2>About Me</h2>
+    <p> Hello! Welcome to my portfolio. I am a Veteran that served 12 years and 8 months in the United States Army, I have switched my career path to Information Technology and have been learning alot of new and amazing things along the way. I have complete my COMPTIA A+, Security+, Network+, CYSA+. I hope to continue to learn new things, and improve my skills and knowledge.</P>
+    
+    <!--Horizontal Line separating sections-->
+    <hr>
+
+    <!--Education-->
+    <h2>Education</h2>
+    <ol>
+        <li> High School Diploma Francis Lewis HighSchool 2012</li>
+        <li> Completed COMPTIA A+ </li>
+        <li> Completed COMPTIA Security+</li>
+        <li> Completed COMPTIA Network+</li>
+        <li> Completed COMPTIA CYSA</li>
+    <ol>
+    
+    <!--Horizontal Line-->
+    <hr>
+
+    <!--Skills-->
+    <h2>Skills</h2>
+    <ul>
+        <li>Leadership</li>
+        <li>Problem Solving</li>
+        <li>Teamwork</li>
+    </ul>
+
+    <!--Interests-->
+    <h2>Interests</h2>
+    <p>Outside of school, I enjoy playing video games, learning about new Information Techology trends, watching action movies, learning new simple coding projects. Most the time i used to spend my free time working, so i am learning my interest as i go. </p>
+
+    <h2>Favorite Website</h2>
+    <p>One of the best places I use to learn coding is <a href="https://www.w3schools.com" target="_blank">W3Schools</a>.</p>
+
+    <!--Contact Information-->
+    <h2>Contact Information</h2>
+    <p> If you will like to get in touch with me please email me at: <a href="mailto:tapia.ramirez2@gmail.com">tapia.ramirez2@gmail.com</a></p>
+
+</body>
+</html>
+
+        
+    
+    
+    
+
+    
