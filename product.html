@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>St. John's University - Products</title>
+    <style>   
+  body {
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 50px 80px;
+        color: #111;
+    }
+header{
+    display: flex;
+    align-items: center;
+    margin-bottom: 120px;
+}
+.logo img {
+    height: 60px;
+
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 60px;
+    margin-left: 150px;
+    padding: 0;
+
+}
+nav a {
+    text-decoration: none;
+    color: #111;
+    font-size: 1.1rem;
+}
+.footer-colums {
+    display: flex;
+    justify-content: space-between;
+    font-family: 0.9rem;
+    color: #555;
+    margin-top:100px;
+}
+.footer-col ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+.footer-col p, .footer-col li {
+    margin-bottom: 5px;
+
+}
+.footer-col a {
+    text-decoration: none;
+    color: #555;
+
+}
+.products-section {
+    margin-top: 120px;
+    margin-bottom: 120px;
+
+}
+.products-header {
+    text-align: right;
+    margin-bottom: 50px;
+
+}
+.products-header h2{
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin: 0;
+}
+.products-header h2 strong {
+    font-weight: 700;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat (4, 1fr);
+    gap: 25px
+}
+.product-card {
+    display:flex;
+    flex-direction: column;
+}
+.product-card h3{
+    font-size: 1.15rem;
+    font-weight: 600; 
+    margin: 0 0 15px 0;
+}
+.product-card p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0 0 25px 0;
+    flex-grow: 1;
+
+}
+.product-card img {
+    width:100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius:15px ;
+    background-color: #e0e0e0;
+
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">
+<img src="Images/St_Johns.png"  alt="St. Johns University Logo">
+</div>
+<nav>
+    <ul>
+        <li><a href="index.html">Services</a></li>
+        <li><a href="products.html">Products</a></li>
+    </ul>
+</nav>
+</header>
+<main>
+
+<section id="products" class="products-section">
+            <div class="products-header">
+                <h2><strong>Explore</strong> our products</h2>
+            </div>
+            <div class="products-grid">
+                <article class="product-card">
+                    <h3>Queue Management System</h3>
+                    <p>AI driven custom-built apps engineered for excellence and efficiency.</p>
+                    <img src="Images/product1.jpg" alt="Students building robotics">
+
+                </article>
+                <article class="product-card">
+                    <h3>Queue Management System</h3>
+                    <p>Cloud-first strategies that drive speed, scale, and savings</p>
+                    <img src="Images/products2.jpg" alt="Hands soldering a green circuit board">
+            
+                </article>
+                <article class="product-card">
+                    <h3>Queue Management System</h3>
+                    <p>End-to-end tech support so you can focus on growth, not glitches</p>
+                    <img src="Images/product3.jpg" alt="Man standing next to lab equipment">
+                
+                </article>
+                <article>
+                    <h3>Queue Management System</h3>
+                    <p>From vision to execution - strategic IT advisory you can count on.</p>
+                    <img src="Images/product.4jpg" alt="Close up of soldering with smoke">
+
+                </article>
+            </div>
+        </section>
+        </main>
+
+
+  <footer>
+        <div class="footer-columns">
+            <div class="footer-col location">
+                <p>25 Summers St, Oyster Bay<br> New York 11771, USA</p>
+            </div>
+            <div class="footer-col links">
+                <ul>
+                    <li><a href="#">Who We Are</a></li>
+                    <li><a href="#">Publications</a></li>
+                </ul>
+            </div>
+            <div class="footer-col links">
+                <ul>
+                    <li><a href="#">Our mission</a></li>
+                    <li><a href="#">Our vision</a></li>
+                </ul>
+            </div>
+            <div class="footer-col links">
+                <ul>
+                    <li><a href="#">Career</a></li>
+                    <li><a href="#">Internship</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact">
+                <p>(917) 222-2222<br><a href="mailto:info@infotix.com">info@infotix.com</a></p>
+            </div>
+            </div>
+        </footer>
+
+</html>
