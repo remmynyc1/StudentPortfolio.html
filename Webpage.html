@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My List</title>
+<style>
+:root{--paper:#f6f3ec;--ink:#222;--rule:#bdb8aa;--mark:#b3261e;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--paper:#1e1d1a;--ink:#e8e4d8;--rule:#4a4740;--mark:#e0685f;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.4 Georgia,"Times New Roman",serif}
+.page{max-width:520px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;border-inline:1px solid var(--rule)}
+header,footer{padding:14px 16px;display:flex;justify-content:space-between;align-items:baseline}
+header{border-bottom:2px solid var(--ink)}
+footer{border-top:2px solid var(--ink);margin-top:auto;font-size:14px}
+h1{margin:0;font-size:22px;font-weight:bold}
+a{color:var(--ink)}
+main{padding:0 16px 20px}
+.row{display:grid;grid-template-columns:28px 56px 1fr;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule)}
+.flag{width:28px;height:28px;padding:3px;background:none;border:0;cursor:pointer;color:var(--rule)}
+.flag svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2}
+.flag[aria-pressed="true"]{color:var(--mark)}
+.flag[aria-pressed="true"] svg{fill:currentColor}
+.thumb{width:56px;height:56px;padding:0;border:1px solid var(--ink);background:none;color:var(--ink);font:24px Georgia,serif;cursor:pointer;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+input.t,textarea.t{width:100%;font:inherit;color:inherit;background:transparent;border:0;border-bottom:1px solid var(--ink);padding:6px 2px;border-radius:0}
+input.t:focus,textarea.t:focus{outline:0;border-bottom:2px solid var(--mark)}
+.gap{padding:10px 0 4px;text-align:center;letter-spacing:.5em;color:var(--rule)}
+.link{background:none;border:0;padding:0;font:inherit;color:var(--ink);text-decoration:underline;cursor:pointer}
+main>.link{margin-top:16px}
+#contact{display:none}
+#contact label{display:block;margin:16px 0 2px;font-size:15px}
+#contact textarea{border:1px solid var(--ink);padding:8px}
+#msg{margin-top:12px;color:var(--mark)}
+input[type=file]{display:none}
+</style>
+</head>
+<body>
+<div class="page" id="home">
+  <header><h1>My List</h1><a href="#contact">Contact</a></header>
+  <main>
+    <div id="list"></div>
+    <div class="gap" aria-hidden="true">. . .</div>
+    <div id="last"></div>
+    <button class="link" id="add" type="button">Add a row</button>
+  </main>
+  <footer><span id="count"></span><span>Tap a square to add a picture</span></footer>
+</div>
+
+<div class="page" id="contact">
+  <header><h1>Contact</h1><a href="#home">Back</a></header>
+  <main>
+    <label for="cn">Name</label><input class="t" id="cn" autocomplete="name">
+    <label for="ce">Email</label><input class="t" id="ce" type="email" autocomplete="email">
+    <label for="cm">Message</label><textarea class="t" id="cm" rows="5"></textarea>
+    <button class="link" id="send" type="button" style="margin-top:18px">Send</button>
+    <div id="msg" role="status"></div>
+  </main>
+</div>
+
+<input type="file" id="file" accept="image/*">
+<script>
+const list=document.getElementById('list'),last=document.getElementById('last'),count=document.getElementById('count');
+let pending=null;
+const FLAG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4h11l-2 4 2 4H6"/></svg>';
+function makeRow(text){
+  const r=document.createElement('div');r.className='row';
+  r.innerHTML='<button class="flag" type="button" aria-pressed="false" aria-label="Flag">'+FLAG+'</button>'+
+    '<button class="thumb" type="button" aria-label="Add picture">+</button>'+
+    '<input class="t" type="text" aria-label="Row text">';
+  r.querySelector('input').value=text||'';
+  r.querySelector('.flag').onclick=e=>{const b=e.currentTarget;
+    b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');update();};
+  r.querySelector('.thumb').onclick=e=>{pending=e.currentTarget;document.getElementById('file').click();};
+  return r;
+}
+document.getElementById('file').onchange=e=>{
+  const f=e.target.files[0];if(!f||!pending)return;
+  const rd=new FileReader();
+  rd.onload=()=>{pending.innerHTML='<img alt="" src="'+rd.result+'">';e.target.value='';};
+  rd.readAsDataURL(f);
+};
+function update(){
+  const rows=document.querySelectorAll('.row').length,fl=document.querySelectorAll('.flag[aria-pressed="true"]').length;
+  count.textContent=rows+' rows, '+fl+' flagged';
+}
+['Plan the week','Review notes','Send the update','Book the appointment'].forEach(t=>list.appendChild(makeRow(t)));
+last.appendChild(makeRow('Final item'));
+document.getElementById('add').onclick=()=>{list.appendChild(makeRow(''));update();list.lastChild.querySelector('input').focus();};
+update();
+
+function route(){
+  const c=location.hash==='#contact';
+  document.getElementById('contact').style.display=c?'flex':'none';
+  document.getElementById('home').style.display=c?'none':'flex';
+  window.scrollTo(0,0);
+}
+addEventListener('hashchange',route);route();
+document.getElementById('send').onclick=()=>{
+  const n=document.getElementById('cn').value.trim(),e=document.getElementById('ce').value.trim(),t=document.getElementById('cm').value.trim();
+  document.getElementById('msg').textContent=(n&&/\S+@\S+\.\S+/.test(e)&&t)?'Thanks, '+n+'. Message ready to send.':'Fill in your name, a valid email, and a message.';
+};
+</script>
+</body>
+</html>
